@@ -20,9 +20,9 @@ public class GetCategories {
         this.getCategoriesService = getCategoriesService;
     }
 
-    @GetMapping("/categories")
-    public CategoryResponse getCategories(@RequestBody CustomerData customerData) {
-        CustomerEntity customer = customerRepository.findByEmail(customerData.email);
+    @GetMapping("/categories/{email}")
+    public CategoryResponse getCategories(@PathVariable String email) {
+        CustomerEntity customer = customerRepository.findByEmail(email);
 
         if (customer == null) {
             throw new EntityNotFoundException("The customer is not found, please provide an email address of a valid customer");
@@ -30,6 +30,4 @@ public class GetCategories {
 
         return getCategoriesService.getCategoryResponse(customer);
     }
-
-    record CustomerData(String email) {}
 }

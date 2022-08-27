@@ -12,12 +12,7 @@ http://localhost:8080/customer_login
 ----------------------------------
 
 GET
-http://localhost:8080/categories
-
-{
-"email": "willem@gmail.com"
-}
-
+http://localhost:8080/categories/{email}
 
 --------------------------------------
 
